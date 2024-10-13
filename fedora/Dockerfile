@@ -18,6 +18,7 @@ RUN dnf install -y git \
                    unzip \
                    gettext \
                    glibc-gconv-extra \
+                   tmux \
                    && dnf groupinstall -y "Development Tools" "Development Libraries"
 
 # asdf
