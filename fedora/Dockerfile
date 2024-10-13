@@ -24,17 +24,18 @@ RUN dnf install -y git \
 RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.1 && \
     echo '. "$HOME/.asdf/asdf.sh"' >> ~/.bashrc && \
     echo '. "$HOME/.asdf/completions/asdf.bash"' >> ~/.bashrc
-# Install asdf plugins for the desired languages (Node.js, Ruby, Go)
 RUN asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git && \
     asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git && \
-    asdf plugin add golang https://github.com/kennyp/asdf-golang.git
-# Install language versions through asdf (Node.js, Ruby, Go)
+    asdf plugin add golang https://github.com/kennyp/asdf-golang.git && \
+    asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
 RUN asdf install nodejs latest && \
     asdf global nodejs latest && \
     asdf install ruby latest && \
     asdf global ruby latest && \
     asdf install golang latest && \
-    asdf global golang latest
+    asdf global golang latest && \
+    asdf install rust latest && \
+    asdf global rust latest
 
 # neoVim
 WORKDIR /root/neovim
