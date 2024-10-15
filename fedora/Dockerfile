@@ -35,13 +35,19 @@ RUN asdf install nodejs latest && \
     asdf install ruby latest && \
     asdf global ruby latest && \
     asdf install golang latest && \
-    asdf global golang latest && \
+    asdf global golang latest && \ 
     asdf install rust latest && \
     asdf global rust latest
 
 # Ruby Gems
 RUN gem install rubocop && \
     gem install ruby-lsp
+
+# Golang Libraries
+RUN echo 'export PATH="$PATH:$(go env GOPATH)/bin"' >> ~/.bashrc
+
+RUN go install golang.org/x/tools/gopls@latest && \
+    go install golang.org/x/tools/cmd/goimports@latest
 
 # neoVim
 WORKDIR /root/neovim
@@ -54,6 +60,8 @@ RUN git clone https://github.com/dense-analysis/ale.git && \
     git clone https://github.com/nvim-treesitter/nvim-treesitter.git && \
     git clone https://github.com/tpope/vim-commentary.git && \
     git clone https://github.com/nvim-lua/plenary.nvim.git && \
+    git clone https://github.com/catppuccin/nvim.git && \
+    git clone https://github.com/tpope/vim-dispatch.git && \
     git clone https://github.com/nvim-telescope/telescope.nvim.git
 
 COPY init.lua /root/.config/nvim/init.lua
