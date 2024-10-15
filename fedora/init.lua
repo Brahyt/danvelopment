@@ -1,8 +1,6 @@
 vim.g.mapleader = "\\"
 vim.cmd.colorscheme "catppuccin"
 
-export PATH="$PATH:$(go env GOPATH)/bin"
-
 -- Folding
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

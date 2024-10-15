@@ -32,8 +32,8 @@ RUN asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git && \
     asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
 RUN asdf install nodejs latest && \
     asdf global nodejs latest && \
-    asdf install ruby latest && \
-    asdf global ruby latest && \
+    asdf install ruby 3.3.5 && \
+    asdf global ruby 3.3.5 && \
     asdf install golang latest && \
     asdf global golang latest && \ 
     asdf install rust latest && \
