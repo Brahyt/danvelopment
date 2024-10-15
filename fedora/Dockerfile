@@ -13,6 +13,7 @@ RUN dnf install -y git \
                    libffi-devel \
                    readline-devel \
                    libyaml-devel \
+                   libevent-devel \
                    ninja-build \
                    cmake \
                    unzip \
@@ -62,6 +63,8 @@ RUN git clone https://github.com/dense-analysis/ale.git && \
     git clone https://github.com/nvim-lua/plenary.nvim.git && \
     git clone https://github.com/catppuccin/nvim.git && \
     git clone https://github.com/tpope/vim-dispatch.git && \
+    git clone https://github.com/tpope/vim-fugitive.git && \
+    git clone https://github.com/windwp/nvim-autopairs.git && \
     git clone https://github.com/nvim-telescope/telescope.nvim.git
 
 COPY init.lua /root/.config/nvim/init.lua
