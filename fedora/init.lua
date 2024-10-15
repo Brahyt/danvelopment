@@ -95,7 +95,6 @@ require('nvim-treesitter.configs').setup {
 
 require'lspconfig'.ruby_lsp.setup{}
 require'lspconfig'.pyright.setup{}
-require'lspconfig'.solargraph.setup{}
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.rubocop.setup{}
 require'lspconfig'.ts_ls.setup{
