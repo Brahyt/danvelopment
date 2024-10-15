@@ -19,6 +19,7 @@ RUN dnf install -y git \
                    gettext \
                    glibc-gconv-extra \
                    tmux \
+                   ripgrep \
                    && dnf groupinstall -y "Development Tools" "Development Libraries"
 
 # asdf
@@ -38,10 +39,24 @@ RUN asdf install nodejs latest && \
     asdf install rust latest && \
     asdf global rust latest
 
+# Ruby Gems
+RUN gem install rubocop && \
+    gem install ruby-lsp
+
 # neoVim
 WORKDIR /root/neovim
 RUN git clone https://github.com/neovim/neovim.git . && \
     make CMAKE_BUILD_TYPE=RelWithDebInfo && \
     make install
+WORKDIR /root/.config/nvim/pack/my_plugs/start/
+RUN git clone https://github.com/dense-analysis/ale.git && \
+    git clone https://github.com/neovim/nvim-lspconfig.git && \
+    git clone https://github.com/nvim-treesitter/nvim-treesitter.git && \
+    git clone https://github.com/tpope/vim-commentary.git && \
+    git clone https://github.com/nvim-lua/plenary.nvim.git && \
+    git clone https://github.com/nvim-telescope/telescope.nvim.git
+
+COPY init.lua /root/.config/nvim/init.lua
+
 
 CMD ["/bin/bash"]
